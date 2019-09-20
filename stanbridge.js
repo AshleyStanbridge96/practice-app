@@ -1,11 +1,14 @@
-const calcTotal = (total, tip, tax) => {
-    const tipAmt = total * rate;
-    const grandTotal = total + tipAmt + tax;
+const calcTotal = (total, tipAmt, taxAmt) => {
+    const grandTotal = total + tipAmt + taxAmt;
     return grandTotal;
 }
 
 const calcTip = (total, rate) => {
     return total * (rate/100);
+}
+
+const calcTax = (total) => {
+    return total * (5.5/100);
 }
 
 
@@ -16,7 +19,8 @@ document.querySelector("#calc-button").addEventListener("click", () => {
     const tax = 5.50;
 
     const tipTotal = calcTip(total, rate);
-    const result = calcTotal(total, tipTotal, tax);
+    const taxTotal = calcTax(total);
+    const result = calcTotal(total, tipTotal, taxTotal);
 
     document.querySelector("#rate").innerHTML = rate;
     document.querySelector("#tip").innerHTML = tipTotal;
